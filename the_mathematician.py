@@ -1,7 +1,16 @@
 #!/usr/local/bin/python3
 
-numberToWord = {'.': 'point', '0': 'zero', '1': 'one', '2': 'two', '3': 'three', '4': 'four',
-  '5': 'five', '6': 'six', '7': 'seven', '8': 'eight', '9': 'nine'}
+numberToWord = {'.': 'point',
+  '0': 'zero',
+  '1': 'one',
+  '2': 'two',
+  '3': 'three',
+  '4': 'four',
+  '5': 'five',
+  '6': 'six',
+  '7': 'seven',
+  '8': 'eight',
+  '9': 'nine'}
 
 digitsNeeded = 1000
 
@@ -15,6 +24,8 @@ for i in range(digitsNeeded):
 	if nextChar:
 		if i == 0:
 			print(numberToWord[nextChar].capitalize(), end = ' ')
+		elif i == (digitsNeeded - 1):
+			print(numberToWord[nextChar], end = '.\n')
 		else:
 			print(numberToWord[nextChar], end = ' ')
 	else:
