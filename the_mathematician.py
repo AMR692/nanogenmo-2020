@@ -21,7 +21,7 @@ numberToWord = {'.': 'point',
   '8': 'eight',
   '9': 'nine'}
 
-intro = 'This is the introduction to the story. "'
+intro = '\tThis is the introduction to the story. "'
 outro = '," and that\'s the end of the story.'
 
 digitsNeeded = 100 - (WordCount(intro) + WordCount(outro))
@@ -34,6 +34,8 @@ if hasError:
 	errorStart = digitsNeeded // 3 # we don't want the error to appear too soon
 	errorEnd = digitsNeeded - errorStart # or too close to the end. We want to be in the middle 3rd
 	errorLocation = randrange(errorStart, errorEnd)
+else:
+	errorLocation = -1
 
 # reading in a 1M-byte text file all at once probably isn't the best idea,
 # so we're going to read the file one character at a time.
@@ -42,7 +44,8 @@ print(intro, end = '')
 
 piFile = open('pi_dec_1m.txt')
 
-for i in range(digitsNeeded):
+i = 0
+while i < digitsNeeded:
 	nextChar = piFile.read(1)
 	if nextChar:
 		correctDigit = numberToWord[nextChar]
@@ -60,7 +63,11 @@ for i in range(digitsNeeded):
 			print(correctDigit, end = ' ')
 	else:
 		print('End of file error. I guess π isn\'t infinite after all! ¯\\_(ツ)_/¯')
+		exit(1)
+	i += 1
 
 piFile.close()
 
 print(outro)
+
+exit(0)
