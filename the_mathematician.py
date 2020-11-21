@@ -24,7 +24,7 @@ numberToWord = {'.': 'point',
 intro = '\tThis is the introduction to the story. "'
 outro = '," and that\'s the end of the story.'
 
-digitsNeeded = 100 - (WordCount(intro) + WordCount(outro))
+digitsNeeded = 1000 - (WordCount(intro) + WordCount(outro))
 
 # is this version going to have an error in π?
 errorPct = 34 # this % of text generated will have an error in π
@@ -45,19 +45,27 @@ print(intro, end = '')
 piFile = open('pi_dec_1m.txt')
 
 i = 0
+grafWords = randrange(50, 300)
 while i < digitsNeeded:
 	nextChar = piFile.read(1)
 	if nextChar:
+		grafWords -= 1
+		if grafWords == 0:
+			beginGraf = '."\n\tShe continued to write. "'
+			print(beginGraf, end = '')
+			digitsNeeded -= WordCount(beginGraf)
 		correctDigit = numberToWord[nextChar]
-		if i == 0:
+		if i == 0 or grafWords == 0:
 			print(correctDigit.capitalize(), end = ' ')
+			if grafWords == 0:
+				grafWords = randrange(50, 300)
 		elif hasError and i == errorLocation:
 			numberList = list(numberToWord.values())
 			numberList.remove('point')
 			numberList.remove(correctDigit)
 			wrongDigit = choice(numberList)
 			print(wrongDigit, end = ' ')
-		elif i == (digitsNeeded - 1):
+		elif i == (digitsNeeded - 1) or grafWords == 1:
 			print(correctDigit, end = '')
 		else:
 			print(correctDigit, end = ' ')
