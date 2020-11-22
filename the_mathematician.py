@@ -28,14 +28,13 @@ digitsNeeded = 1000 - (WordCount(intro) + WordCount(outro))
 
 # is this version going to have an error in π?
 errorPct = 34 # this % of text generated will have an error in π
-hasError = (randrange(0, 100) < errorPct)
-if hasError:
+if (randrange(0, 100) < errorPct):
 	# okay, there will be an error. Now to figure out where the error will be
 	errorStart = digitsNeeded // 3 # we don't want the error to appear too soon
-	errorEnd = digitsNeeded - errorStart # or too close to the end. We want to be in the middle 3rd
+	errorEnd = digitsNeeded - errorStart # or too close to the end. We want the middle 3rd
 	errorLocation = randrange(errorStart, errorEnd)
 else:
-	errorLocation = -1
+	errorLocation = -1 # there won't be an error; set location to -1, we'll never see that
 
 # reading in a 1M-byte text file all at once probably isn't the best idea,
 # so we're going to read the file one character at a time.
@@ -59,7 +58,7 @@ while i < digitsNeeded:
 			print(correctDigit.capitalize(), end = ' ')
 			if grafWords == 0:
 				grafWords = randrange(50, 300)
-		elif hasError and i == errorLocation:
+		elif i == errorLocation: # this will never be triggered if no error is asked for
 			numberList = list(numberToWord.values())
 			numberList.remove('point')
 			numberList.remove(correctDigit)
