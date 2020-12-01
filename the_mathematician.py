@@ -28,13 +28,28 @@ numberToWord = {'.': 'point',
   '8': 'eight',
   '9': 'nine'}
 
+otherProjects = ['the square root of two', 'e', 'i', 'τ', 'π again']
+
 pronouns = [('he', 'his'), ('she', 'her'), ('they', 'their')]
 pronouns = choice(pronouns)
 ourSubject = pronouns[0]
 ourPossessive = pronouns[1]
 
-intro = FixPronouns('\tThis is the introduction to the story. "', ourSubject, ourPossessive)
-outro = FixPronouns('," and that\'s the end of the story.', ourSubject, ourPossessive)
+intro = '\tThe mathematician got up from %%poss project, and sat down at another table. '
+intro = intro + '%%Subj needed a break, and decided to write out as many digits of π %%subj could remember. '
+intro = intro + 'π was %%poss favorite number. '
+intro = intro + '%%Subj picked up %%poss pen, and began to write. "'
+
+outro = ', and at this, %%subj paused. How many digits had %%subj written? '
+outro = outro + 'Had anyone memorized that many digits of π? '
+outro = outro + 'Had %%subj made a mistake somewhere in there? '
+outro = outro + 'There was no way to tell.'
+outro = outro + '\n\t%%Subj decided to stop. '
+outro = outro + 'Perhaps next time %%subj would try writing out ' + choice(otherProjects) + ' instead.'
+
+intro = FixPronouns(intro, ourSubject, ourPossessive)
+outro = FixPronouns(outro, ourSubject, ourPossessive)
+
 grafIntros=[FixPronouns('."\n\t%%Subj continued to write. "', ourSubject, ourPossessive),
   FixPronouns('."\n\t%%Subj set down %%poss pen, then picked it up and kept writing. "', ourSubject, ourPossessive),
   FixPronouns('."\n\t%%Subj paused for a moment, then went on writing. "', ourSubject, ourPossessive),
