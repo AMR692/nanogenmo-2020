@@ -58,7 +58,7 @@ grafIntros=[FixPronouns('."\n\t%%Subj continued to write. "', ourSubject, ourPos
 digitsNeeded = 50000 - (WordCount(intro) + WordCount(outro))
 
 # is this version going to have an error in pi?
-errorPct = 100 # this % of text generated will have an error in pi
+errorPct = 34 # this % of text generated will have an error in pi
 if (randrange(0, 100) < errorPct):
 	# okay, there will be an error. Now to figure out where the error will be
 	errorStart = digitsNeeded // 3 # we don't want the error to appear too soon
