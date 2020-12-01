@@ -28,7 +28,7 @@ numberToWord = {'.': 'point',
   '8': 'eight',
   '9': 'nine'}
 
-otherProjects = ['the square root of two', 'e', 'i', 'τ', 'π again']
+otherProjects = ['the square root of two', 'e', 'i', 'tau', 'pi again']
 
 pronouns = [('he', 'his'), ('she', 'her'), ('they', 'their')]
 pronouns = choice(pronouns)
@@ -36,12 +36,12 @@ ourSubject = pronouns[0]
 ourPossessive = pronouns[1]
 
 intro = '\tThe mathematician got up from %%poss project, and sat down at another table. '
-intro = intro + '%%Subj needed a break, and decided to write out as many digits of π %%subj could remember. '
-intro = intro + 'π was %%poss favorite number. '
+intro = intro + '%%Subj needed a break, and decided to write out as many digits of pi %%subj could remember. '
+intro = intro + 'pi was %%poss favorite number. '
 intro = intro + '%%Subj picked up %%poss pen, and began to write. "'
 
-outro = ', and at this, %%subj paused. How many digits had %%subj written? '
-outro = outro + 'Had anyone memorized that many digits of π? '
+outro = '," and at this, %%subj paused. How many digits had %%subj written? '
+outro = outro + 'Had anyone memorized that many digits of pi? '
 outro = outro + 'Had %%subj made a mistake somewhere in there? '
 outro = outro + 'There was no way to tell.'
 outro = outro + '\n\t%%Subj decided to stop. '
@@ -55,10 +55,10 @@ grafIntros=[FixPronouns('."\n\t%%Subj continued to write. "', ourSubject, ourPos
   FixPronouns('."\n\t%%Subj paused for a moment, then went on writing. "', ourSubject, ourPossessive),
   FixPronouns('."\n\t%%Subj sat back, then leaned forward to write some more. "', ourSubject, ourPossessive)]
 
-digitsNeeded = 1000 - (WordCount(intro) + WordCount(outro))
+digitsNeeded = 50000 - (WordCount(intro) + WordCount(outro))
 
-# is this version going to have an error in π?
-errorPct = 100 # this % of text generated will have an error in π
+# is this version going to have an error in pi?
+errorPct = 100 # this % of text generated will have an error in pi
 if (randrange(0, 100) < errorPct):
 	# okay, there will be an error. Now to figure out where the error will be
 	errorStart = digitsNeeded // 3 # we don't want the error to appear too soon
@@ -74,7 +74,7 @@ print(intro, end = '')
 
 piFile = open('pi_dec_1m.txt')
 
-grafWords = randrange(50, 300)
+grafWords = randrange(100, 500)
 while digitsNeeded > 0:
 	nextChar = piFile.read(1)
 	if nextChar:
@@ -98,7 +98,7 @@ while digitsNeeded > 0:
 		else:
 			print(correctDigit, end = ' ')
 	else:
-		print('End of file error. I guess π isn\'t infinite after all! ¯\\_(ツ)_/¯')
+		print('End of file error. I guess pi isn\'t infinite after all! ¯\\_(ツ)_/¯')
 		exit(1)
 	grafWords -= 1
 	digitsNeeded -= 1
