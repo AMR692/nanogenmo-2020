@@ -37,7 +37,7 @@ ourPossessive = pronouns[1]
 
 intro = '\tThe mathematician got up from %%poss project, and sat down at another table. '
 intro = intro + '%%Subj needed a break, and decided to write out as many digits of pi %%subj could remember. '
-intro = intro + 'pi was %%poss favorite number. '
+intro = intro + 'Pi was %%poss favorite number. '
 intro = intro + '%%Subj picked up %%poss pen, and began to write. "'
 
 outro = '," and at this, %%subj paused. How many digits had %%subj written? '
